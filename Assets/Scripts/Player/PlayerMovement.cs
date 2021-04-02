@@ -10,9 +10,6 @@ public class PlayerMovement : MonoBehaviour
     public event Action BeganWalking;
     public event Action StoppedWalking;
 
-    public bool IsWalkingLeft { get; private set; }
-    public bool Grounded { get; private set; }
-
     [SerializeField] private float _minGroundNormalY;
     [SerializeField] private float _gravityModifier = 1f;
     [SerializeField] private Vector2 _velocity;
@@ -31,6 +28,9 @@ public class PlayerMovement : MonoBehaviour
     private ContactFilter2D _contactFilter;
     private RaycastHit2D[] _hitBuffer = new RaycastHit2D[16];
     private List<RaycastHit2D> _hitBufferList = new List<RaycastHit2D>(16);
+
+    public bool IsWalkingLeft { get; private set; }
+    public bool Grounded { get; private set; }
 
     private void OnEnable()
     {

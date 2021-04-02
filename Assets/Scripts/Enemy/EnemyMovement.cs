@@ -9,16 +9,16 @@ public class EnemyMovement : MonoBehaviour
 {
     public event Action ChangeDirection;
 
-    public bool IsWalking { get; private set; }
-    public bool IsWalkingLeft { get; private set; }
-
     [SerializeField] private Transform _path;
     [SerializeField] private float _speed;
     [SerializeField] private float _timeToBeginWalk = 2;
-    private float _elapsedTimeToBeginWalk;
 
+    private float _elapsedTimeToBeginWalk;
     private Transform[] _points;
     private int _currentPointIndex;
+
+    public bool IsWalking { get; private set; }
+    public bool IsWalkingLeft { get; private set; }
 
     private void Start()
     {
