@@ -5,10 +5,10 @@ using UnityEngine;
 public class PlayerTracker : MonoBehaviour
 {
     [SerializeField] private Player _player;
-    [SerializeField] private float _yOffset;
+    [SerializeField] private float _offsetY;
 
     private void Update()
     {
-        transform.position = new Vector3(_player.transform.position.x, _player.transform.position.y + _yOffset, transform.position.z);
+        transform.position = new Vector3(_player.transform.position.x, _player.transform.position.y + _offsetY, transform.position.z);
     }
 }

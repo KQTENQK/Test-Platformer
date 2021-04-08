@@ -10,15 +10,15 @@ public class CoinContainer : MonoBehaviour
 
     private void OnEnable()
     {
-        _player.CoinTaken += DestroyCoin;
+        _player.CoinTaken += OnCoinTaken;
     }
 
     private void OnDisable()
     {
-        _player.CoinTaken -= DestroyCoin;
+        _player.CoinTaken -= OnCoinTaken;
     }
 
-    private void DestroyCoin(Coin coin)
+    private void OnCoinTaken(Coin coin)
     {
         for (int i = 0; i < _coins.Count; i++)
         {

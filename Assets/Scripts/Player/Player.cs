@@ -5,9 +5,9 @@ using UnityEngine.Events;
 
 public class Player : MonoBehaviour
 {
-    public event UnityAction<Coin> CoinTaken;
-
     public int CoinCount { get; private set; }
+
+    public event UnityAction<Coin> CoinTaken;
 
     private void Start()
     {
