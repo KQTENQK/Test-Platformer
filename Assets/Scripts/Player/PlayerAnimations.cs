@@ -23,21 +23,21 @@ public class PlayerAnimations : MonoBehaviour
 
     private void OnEnable()
     {
-        _playerMovement.BeganWalking += BeginWalking;
-        _playerMovement.StoppedWalking += StopWalking;
+        _playerMovement.BeganWalking += OnBeganWalking;
+        _playerMovement.StoppedWalking += OnStopWalking;
     }
 
     private void OnDisable()
     {
-        _playerMovement.BeganWalking -= BeginWalking;
-        _playerMovement.StoppedWalking -= StopWalking;
+        _playerMovement.BeganWalking -= OnBeganWalking;
+        _playerMovement.StoppedWalking -= OnStopWalking;
     }
 
-    private void BeginWalking()
+    private void OnBeganWalking()
     {
         _animator.SetBool("IsWalking", true);
     }
-    private void StopWalking()
+    private void OnStopWalking()
     {
         _animator.SetBool("IsWalking", false);
     }

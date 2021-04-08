@@ -5,11 +5,6 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public event Action Jumped;
-    public event Action ChangeDirection;
-    public event Action BeganWalking;
-    public event Action StoppedWalking;
-
     [SerializeField] private float _minGroundNormalY;
     [SerializeField] private float _gravityModifier = 1f;
     [SerializeField] private Vector2 _velocity;
@@ -29,18 +24,23 @@ public class PlayerMovement : MonoBehaviour
     private RaycastHit2D[] _hitBuffer = new RaycastHit2D[16];
     private List<RaycastHit2D> _hitBufferList = new List<RaycastHit2D>(16);
 
+    public event Action Jumped;
+    public event Action ChangeDirection;
+    public event Action BeganWalking;
+    public event Action StoppedWalking;
+
     public bool IsWalkingLeft { get; private set; }
     public bool Grounded { get; private set; }
 
     private void OnEnable()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
-        Jumped += Jump;
+        Jumped += OnJumped;
     }
 
     private void OnDisable()
     {
-        Jumped -= Jump;
+        Jumped -= OnJumped;
     }
 
     private void Start()
@@ -141,7 +141,7 @@ public class PlayerMovement : MonoBehaviour
         return distance;
     }
 
-    private void Jump()
+    private void OnJumped()
     {
         _velocity.y = 20;
     }

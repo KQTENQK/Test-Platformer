@@ -16,7 +16,7 @@ public class EnemyAnimations : MonoBehaviour
         _movement = GetComponent<EnemyMovement>();
         _animator = GetComponent<Animator>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
-        _movement.ChangeDirection += Flip;
+        _movement.ChangeDirection += OnChangeDirection;
     }
 
     private void Update()
@@ -24,7 +24,7 @@ public class EnemyAnimations : MonoBehaviour
         _animator.SetBool("IsWalking", _movement.IsWalking);
     }
 
-    private void Flip()
+    private void OnChangeDirection()
     {
         _spriteRenderer.flipX = _movement.IsWalkingLeft;
     }
